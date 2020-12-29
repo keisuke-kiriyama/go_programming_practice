@@ -2,3 +2,13 @@
 !*.*
 !*/
 !Makefile
+.gitignore
+.DS_Store
+*.log
+*~
+\#*#
+*.log
+*.old*
+*-mytest*
+*-nouse*
+*-mymemo*
