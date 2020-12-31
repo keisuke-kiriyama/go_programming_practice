@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Go Web Programming</title>
+
+</head>
+
+<body>
+    <!-- 条件アクション -->
+    <!-- {{ if . }}
+    5より大きい数です！
+    {{ else }}
+    5以下の数です！
+    {{ end }} -->
+
+    <!-- イテレータアクション -->
+    <ul>
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+    </ul>
+</body>
+
+</html>
