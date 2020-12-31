@@ -1,8 +1,8 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
+	"text/template"
 )
 
 // 条件アクション
@@ -13,10 +13,16 @@ import (
 // }
 
 // イテレータアクション
+// func process(w http.ResponseWriter, r *http.Request) {
+// 	t, _ := template.ParseFiles("tmpl.html")
+// 	daysOfWeek := []string{"月", "火", "水", "木", "金", "土", "日"}
+// 	t.Execute(w, daysOfWeek)
+// }
+
+// 代入アクション
 func process(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("tmpl.html")
-	daysOfWeek := []string{"月", "火", "水", "木", "金", "土", "日"}
-	t.Execute(w, daysOfWeek)
+	t.Execute(w, "hello")
 }
 
 func main() {
