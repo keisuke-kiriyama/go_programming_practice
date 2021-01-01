@@ -67,7 +67,7 @@ func main() {
 		case xml.StartElement: // XML要素の開始タグ
 			if se.Name.Local == "comment" {
 				var comment Comment
-				// XMLデータを構造体にデコード
+				// XMLデータを構造デコード
 				decoder.DecodeElement(&comment, &se)
 			}
 		}
