@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// go test -v -short -parallel 3
 func TestParallel_1(t *testing.T) {
 	t.Parallel()
 	time.Sleep(1 * time.Second)
