@@ -4,18 +4,30 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"strings"
 	"testing"
 )
 
-func TestHandleGet(t *testing.T) {
+var mux *http.ServeMux
+var writer *httptest.ResponseRecorder
+
+func TestMain(m *testing.M) {
+	setUp()
+	code := m.Run()
+	os.Exit(code)
+}
+
+func setUp() {
 	// テストを実行するマルチプレクサを生成
-	mux := http.NewServeMux()
+	mux = http.NewServeMux()
 	// テスト対象のハンドラを付加
 	mux.HandleFunc("/post/", handleRequest)
-
 	// 返されたHTTPレスポンスを取得
-	writer := httptest.NewRecorder()
+	writer = httptest.NewRecorder()
+}
+
+func TestHandleGet(t *testing.T) {
 	// テストしたいハンドラ宛てのリクエストを作成
 	request, _ := http.NewRequest("GET", "/post/1", nil)
 	// テスト対象のハンドラにリクエストを送信
@@ -32,10 +44,6 @@ func TestHandleGet(t *testing.T) {
 }
 
 func TestHandlePut(t *testing.T) {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/post/", handleRequest)
-
-	writer := httptest.NewRecorder()
 	json := strings.NewReader(`{"content":"updated post", "author": "Sau Sheong`)
 	request, _ := http.NewRequest("PUT", "/post/1", json)
 	mux.ServeHTTP(writer, request)
