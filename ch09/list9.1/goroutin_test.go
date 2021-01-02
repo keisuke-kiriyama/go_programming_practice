@@ -18,3 +18,29 @@ func TestGoPrint2(t *testing.T) {
 	goPrint2()
 	time.Sleep(1 * time.Millisecond)
 }
+
+func BenchmarkPrint1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		print1()
+	}
+}
+
+// goroutinの起動するためのコストで逆に遅くなってる
+func BenchmarkGoPrint1(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		goPrint1()
+	}
+}
+
+func BenchmarkPrint2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		print2()
+	}
+}
+
+// goroutinの起動するためのコストで逆に遅くなってる
+func BenchmarkGoPrint2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		goPrint2()
+	}
+}
