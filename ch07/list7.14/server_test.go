@@ -22,7 +22,7 @@ func setUp() {
 	// テストを実行するマルチプレクサを生成
 	mux = http.NewServeMux()
 	// テスト対象のハンドラを付加
-	mux.HandleFunc("/post/", handleRequest)
+	mux.HandleFunc("/post/", handleRequest(&FakePost{}))
 	// 返されたHTTPレスポンスを取得
 	writer = httptest.NewRecorder()
 }
